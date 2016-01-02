@@ -92,10 +92,6 @@ check that it works just run:
 docker run -d -ti vasylpurchel/kafka kafka-topics.sh --create --zookeeper 172.17.0.1:2181,172.17.0.1:2182,172.17.0.1:2183 --replication-factor 2 --partitions 3 --topic test
 ```
 
-## TODO
-
- * Add badges for image size, layers, docker starts and pulls, circleCI and maybe something else
-
 [1]: http://kafka.apache.org/
 [2]: https://hub.docker.com/_/ubuntu/
 [3]: https://github.com/vasyl-purchel/kafka-docker/blob/master/Dockerfile
