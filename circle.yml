@@ -13,7 +13,7 @@ dependencies:
 
 test:
   override:
-    - docker run -d -p 9200:2181 --name kafka vasylpurchel/zookeeper; sleep 10
+    - docker run -d -p 9200:2181 --name zookeeper vasylpurchel/zookeeper; sleep 10
     - docker run -d -e KAFKA_HEAP_OPTS="-Xmx64M -Xms64M" -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT="172.17.42.1:9200" -e KAFKA_ADVERTISED_PORT=9092 -e KAFKA_ADVERTISED_HOST_NAME="172.17.42.1" --publish 9092:9092 --name kafka-node vasylpurchel/kafka
     - docker ps -a
     - docker logs zookeeper
