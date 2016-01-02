@@ -1,0 +1,39 @@
+kafka-node-1:
+  image: vasylpurchel/kafka
+  container_name: kafka-node-1
+  ports:
+    - "9092:9092"
+  volumes:
+    - /data/kafka/node1:/tmp/kafka-logs
+  environment:
+    KAFKA_HEAP_OPTS: "-Xmx64M -Xms64M"
+    KAFKA_BROKER_ID: 1
+    KAFKA_ZOOKEEPER_CONNECT: "172.17.0.1:2181,172.17.0.1:2182,172.17.0.1:2183"
+    KAFKA_ADVERTISED_PORT: 9092
+    KAFKA_ADVERTISED_HOST_NAME: "172.17.0.1"
+kafka-node-2:
+  image: vasylpurchel/kafka
+  container_name: kafka-node-1
+  ports:
+    - "9093:9092"
+  volumes:
+    - /data/kafka/node2:/tmp/kafka-logs
+  environment:
+    KAFKA_HEAP_OPTS: "-Xmx64M -Xms64M"
+    KAFKA_BROKER_ID: 2
+    KAFKA_ZOOKEEPER_CONNECT: "172.17.0.1:2181,172.17.0.1:2182,172.17.0.1:2183"
+    KAFKA_ADVERTISED_PORT: 9093
+    KAFKA_ADVERTISED_HOST_NAME: "172.17.0.1"
+kafka-node-3:
+  image: vasylpurchel/kafka
+  container_name: kafka-node-3
+  ports:
+    - "9094:9092"
+  volumes:
+    - /data/kafka/node3:/tmp/kafka-logs
+  environment:
+    KAFKA_HEAP_OPTS: "-Xmx64M -Xms64M"
+    KAFKA_BROKER_ID: 3
+    KAFKA_ZOOKEEPER_CONNECT: "172.17.0.1:2181,172.17.0.1:2182,172.17.0.1:2183"
+    KAFKA_ADVERTISED_PORT: 9094
+    KAFKA_ADVERTISED_HOST_NAME: "172.17.0.1"

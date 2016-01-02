@@ -1,0 +1,34 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+  override:
+    - docker info
+    - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
+    - docker build -t vasylpurchel/kafka .
+    - mkdir -p ~/docker; docker save vasylpurchel/kafka > ~/docker/image.tar
+
+test:
+  override:
+    - docker run -d -p 9200:2181 --name kafka vasylpurchel/zookeeper; sleep 10
+    - docker run -d -e KAFKA_HEAP_OPTS="-Xmx64M -Xms64M" -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT="172.17.42.1:9200" -e KAFKA_ADVERTISED_PORT=9092 -e KAFKA_ADVERTISED_HOST_NAME="172.17.42.1" --publish 9092:9092 --name kafka-node vasylpurchel/kafka
+    - docker ps -a
+    - docker logs zookeeper
+    - docker logs kafka-node
+    - docker run -d vasylpurchel/kafka kafka-topics.sh --create --zookeeper 172.17.42.1:9200 --replication-factor 1 --partitions 1 --topic test
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker tag vasylpurchel/kafka:latest vasylpurchel/kafka:circleci
+      - docker push vasylpurchel/kafka:circleci
+
+#notify:
+#  webhooks:
+#    - url: https://webhooks.gitter.im/e/943bd08b4fcb92798d6e
+#    - url: https://hooks.slack.com/services/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
