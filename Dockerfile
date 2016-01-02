@@ -15,7 +15,7 @@ ADD server.properties /opt/kafka/config/
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/kafka/bin \
     KAFKA_HOME=/opt/kafka \
-    KAFKA_CONFIG_FILE=/opt/kafka/config/server.properties \
+    KAFKA_CONFIG_FILE=/opt/kafka/config/server.properties
 
 ADD docker-entry-point.sh /opt/kafka/
 ENTRYPOINT ["/opt/kafka/docker-entry-point.sh"]
