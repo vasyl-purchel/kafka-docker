@@ -1,5 +1,7 @@
 # Kafka
 
+[![Join the chat at https://gitter.im/vasyl-purchel/kafka-docker](https://badges.gitter.im/vasyl-purchel/kafka-docker.svg)](https://gitter.im/vasyl-purchel/kafka-docker?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Gitter](https://img.shields.io/gitter/room/vasyl-purchel/kafka.svg)](https://gitter.im/vasyl-purchel/kafka)
 [![imagelayers.io](https://badge.imagelayers.io/vasylpurchel/kafka:latest.svg)](https://imagelayers.io/?images=vasylpurchel/kafka:latest)
 [![Docker Stars](https://img.shields.io/docker/stars/vasylpurchel/kafka.svg)](https://hub.docker.com/r/vasylpurchel/kafka/)
