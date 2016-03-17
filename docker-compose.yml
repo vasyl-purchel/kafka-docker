@@ -1,6 +1,7 @@
 kafka-node-1:
   image: vasylpurchel/kafka
   container_name: kafka-node-1
+  net: "host"
   ports:
     - "9092:9092"
   volumes:
@@ -11,11 +12,14 @@ kafka-node-1:
     KAFKA_ZOOKEEPER_CONNECT: "172.17.0.1:2181,172.17.0.1:2182,172.17.0.1:2183"
     KAFKA_ADVERTISED_PORT: 9092
     KAFKA_ADVERTISED_HOST_NAME: "172.17.0.1"
+    KAFKA_PORT: 9092
+    KAFKA_LISTENERS: "PLAINTEXT://:9092"
 kafka-node-2:
   image: vasylpurchel/kafka
-  container_name: kafka-node-1
+  container_name: kafka-node-2
+  net: "host"
   ports:
-    - "9093:9092"
+    - "9093:9093"
   volumes:
     - /data/kafka/node2:/tmp/kafka-logs
   environment:
@@ -24,11 +28,14 @@ kafka-node-2:
     KAFKA_ZOOKEEPER_CONNECT: "172.17.0.1:2181,172.17.0.1:2182,172.17.0.1:2183"
     KAFKA_ADVERTISED_PORT: 9093
     KAFKA_ADVERTISED_HOST_NAME: "172.17.0.1"
+    KAFKA_PORT: 9093
+    KAFKA_LISTENERS: "PLAINTEXT://:9093"
 kafka-node-3:
   image: vasylpurchel/kafka
   container_name: kafka-node-3
+  net: "host"
   ports:
-    - "9094:9092"
+    - "9094:9094"
   volumes:
     - /data/kafka/node3:/tmp/kafka-logs
   environment:
@@ -37,3 +44,5 @@ kafka-node-3:
     KAFKA_ZOOKEEPER_CONNECT: "172.17.0.1:2181,172.17.0.1:2182,172.17.0.1:2183"
     KAFKA_ADVERTISED_PORT: 9094
     KAFKA_ADVERTISED_HOST_NAME: "172.17.0.1"
+    KAFKA_PORT: 9094
+    KAFKA_LISTENERS: "PLAINTEXT://:9094"

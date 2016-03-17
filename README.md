@@ -9,11 +9,13 @@ This is an image for [apache kafka][1] based on [ubuntu:trusty docker image][2]
 
 ## Supported tags and respective Dockerfile links:
 
- * 0.9.0, latest, circleci ([Dockerfile][3])
+ * 0.9.0
+ * 0.9.0.1, latest, circleci ([Dockerfile][3])
 
 latest may be broken as it is not checked by CircleCI as it is built by docker hub,
 circleci tag is pushed only after build and verification passed on CircleCI,
 0.9.0 tag is marking that kafka version is 0.9.0
+0.9.0.1 tag is marking that kafka version is 0.9.0.1
 
 ## Usage
 
